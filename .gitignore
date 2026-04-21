@@ -1,0 +1,16 @@
+# Virtual environment — don't push this!
+venv/
+
+# API keys — NEVER push this!
+.env
+
+# Python cache files — not needed
+__pycache__/
+*.pyc
+*.pyo
+
+# Log files
+*.log
+
+# VS Code settings
+.vscode/
