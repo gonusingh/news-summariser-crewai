@@ -56,7 +56,8 @@ USER runs: python main.py
     │         ↓             │
     │  Agent 3 (Summariser) │  → Writes morning briefing
     │         ↓             │
-    │  Agent 4 (Fact Check) │  → Verifies every URL is real
+    │  Agent 4 (Fact Check) │  → │  Agent 4 (Fact Check) │  → ⚠️ Temporarily disabled
+│                       │     (Groq free tier token limit)
     └───────────────────────┘
                 │
                 ▼
@@ -102,6 +103,9 @@ USER runs: python main.py
 | Tools | DuckDuckGo Search Tool |
 | Input | Summary from Agent 3 (via context) |
 | Output | Final verified news briefing |
+> ⚠️ **Current Status:** Temporarily disabled due to 
+> Groq free tier token limit (12,000 TPM). 
+> Re-enable when upgrading to paid tier!
 
 ---
 
@@ -165,7 +169,9 @@ news_summariser/
 │                          (descriptions, expected outputs)
 │
 ├── crew.py              → Assembles agents + tasks into crew
-│                          (process, order, configuration)
+│                          (process, order, configuration) > **Note:** Currently running 3 agents. 
+> Fact Checker (Agent 4) is built and ready 
+> but disabled due to free tier limits.
 │
 └── main.py              → Entry point — run this every morning!
                            (kickoff, formatting, output)
@@ -303,6 +309,7 @@ Agent 4 (Fact Checker) prevents this by verifying every story has a real URL!
 - [ ] Add **Memory** — remember user preferences across sessions
 - [ ] Add **Streamlit UI** — beautiful web interface
 - [ ] Schedule with **cron job** — auto-run every morning at 8am
+- [ ] Re-enable Fact Checker agent on paid Groq tier
 
 ---
 
