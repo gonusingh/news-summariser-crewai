@@ -325,7 +325,7 @@ Agent 4 (Fact Checker) prevents this by verifying every story has a real URL!
 
 ## 📄 License
 
-MIT License — free to use, modify and distribute.
+Personal Project — All Rights Reserved
 
 ---
 
