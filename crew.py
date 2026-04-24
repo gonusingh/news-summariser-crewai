@@ -7,37 +7,42 @@
 # Add back when upgrading to paid tier!
 # ============================================================
 
+ # crew.py
+# ============================================================
+# Assembles agents and tasks into working Crew
+# ------------------------------------------------------------
+# CLEAN IMPORT: from agents import ...
+# agents/ folder is now a proper Python package!
+# Adding new agent = just add file + update __init__.py
+# ============================================================
+
 from crewai import Crew, Process
 
-# Import only 3 agents (fact checker removed)
+# Clean import from agents package!
 from agents import (
     news_collector,
     news_filter,
     news_summariser
+    # news_fact_checker  ← disabled: Groq token limit
 )
 
-# Import only 3 tasks (fact check task removed)
 from tasks import (
     collect_news_task,
     filter_news_task,
     summarise_news_task
 )
 
-# Assemble the crew with 3 agents
 news_crew = Crew(
     agents=[
-        news_collector,   # searches news
-        news_filter,      # filters news
-        news_summariser   # writes briefing
+        news_collector,
+        news_filter,
+        news_summariser
     ],
-
     tasks=[
-        collect_news_task,    # Task 1
-        filter_news_task,     # Task 2
-        summarise_news_task   # Task 3
+        collect_news_task,
+        filter_news_task,
+        summarise_news_task
     ],
-
-    # Sequential = one after another
     process=Process.sequential,
     verbose=True
 )
